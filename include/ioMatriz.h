@@ -12,11 +12,11 @@ std::vector<std::vector<double>> mkSqMatrixI(int n);
 /*
   -Imprime la matriz
 */
-void imprimirMatriz(const std::vector<std::vector<double>>& m, int n);
+void printMatrix(const std::vector<std::vector<double>>& m, int n);
 
 /*
   -Modifica las filas de una matriz
 */
-void modificaFila(std::vector<std::vector<double>>& m, int n);
+std::vector<std::vector<double>> readMatrix(int n, int m);
 
 #endif

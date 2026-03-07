@@ -4,7 +4,6 @@ using namespace std;
 
 vector<vector<double>> intercambioRenglones(int n, int x, int y){
     vector<vector<double>> A = mkSqMatrixI(n);
-    int k,l;
     
     A[x][x] = 0;
     A[x][y] = 1;
@@ -23,5 +22,22 @@ vector<vector<double>> sumaRenglones(int n, int x, int y){
 vector<vector<double>> filaPorEscalar(int n, int x, int k){
     vector<vector<double>> A = mkSqMatrixI(n);
     A[x][x] = k;
+    return A;
+}
+
+/*
+ Parámetros:
+    n: dimensión
+    x: fila a multiplicar por escalar
+    y: fila en donde se aplicarán los cambios
+    k: escalar por el cual se multiplicará x
+*/
+vector<vector<double>> multiplofilaYSumaRenglones(int n, int x, int y, int k){
+    vector<vector<double>> A = mkSqMatrixI(n);
+
+    A[x][x] = k;
+    A[x][y] = 1;
+
+
     return A;
 }
