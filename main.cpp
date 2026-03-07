@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "ioMatriz.h"
-#include "matrixE.h"
+#include "../include/ioMatriz.h"
+#include "../include/matrixE.h"
 
 using namespace std;
 

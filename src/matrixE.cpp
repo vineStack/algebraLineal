@@ -1,5 +1,5 @@
 #include <vector>
-#include "ioMatriz.h"
+#include "../include/ioMatriz.h"
 using namespace std;
 
 vector<vector<double>> intercambioRenglones(int n, int x, int y){
