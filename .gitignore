@@ -1,9 +1,10 @@
 *.o
 *.out
 
-#Ejecutables
+#Ejecutables/sin extension
 main
 matrices
+Makefile
 
 #Config vscode
 .vscode/
