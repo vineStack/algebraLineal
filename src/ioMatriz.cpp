@@ -16,16 +16,29 @@ vector<vector<double>> mkSqMatrixI(int n){
     return A;
 }
 
-void imprimirMatriz(const vector<vector<double>>& m, int n){
+void printMatrix(const vector<vector<double>>& A, int n, int m){
     cout<<"\n";
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout<<A[i][j]<<"\t";
+        }
+        cout<<"\n";
+    }   
+}
+
+vector<vector<double>> readMatrix(int n, int m){
+    vector<vector<double>> A(n, vector<double>(m, 0.0));
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            cout<<m[i][j]<<"\t";
+            cin>>A[i][j];
         }
-        cout<<"\n";
-    }   
+    }
+    return A;
 }
 
 //void modificaFila(std::vector<std::vector<double>>& m, int n);
