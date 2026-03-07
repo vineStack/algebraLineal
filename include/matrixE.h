@@ -16,4 +16,6 @@ std::vector<std::vector<double>> sumaRenglones(int n, int x, int y);
 // parámetros --->(n: dimensión, x: fila a multiplicar por escalar, k: escalar por el cual se multiplicará)
 std::vector<std::vector<double>> filaPorEscalar(int n, int x, int k);
 
+std::vector<std::vector<double>> multiplofilaYSumaRenglones(int n, int x, int y, int k);
+
 #endif
