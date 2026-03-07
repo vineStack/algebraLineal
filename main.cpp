@@ -1,36 +1,32 @@
 #include <iostream>
 #include <vector>
 #include "ioMatriz.h"
+#include "matrixE.h"
 
 using namespace std;
 
-void intercambioRenglones(vector<vector<double>>& m){
-    int k,l;
-    
-    cout<<"\n Ingresa el numero de la primera fila de las dos para intercambiar: ";
-    cin>>k; k-=1;
-    cout<<"\n Ingresa el numero de la segunda fila de las dos para intercambiar: ";
-    cin>>l; l-=1;
-    
-    m[k][k] = 0;
-    m[k][l] = 1;
-    m[l][l] = 0;
-    m[l][k] = 1;
-    
-}
-
 int main()
 {
-    int n;
-    vector<vector<double>> matriz;
+    int n,x,y;
+    vector<vector<double>> A;
     
     cout<<"Inserte la dimensión \n"<<"n: ";
     cin>>n;
 
-    matriz = mkSqMatrixI(n);
+    A = mkSqMatrixI(n);
+    cout<<"\n Ingresa el numero de la primera fila de las dos para intercambiar: ";
+    cin>>x; x-=1;
+    cout<<"\n Ingresa el numero de la segunda fila de las dos para intercambiar: ";
+    cin>>y; y-=1;
 
-    intercambioRenglones(matriz);
-    imprimirMatriz(matriz,n);
+    intercambioRenglones(n,x,y);
+    imprimirMatriz(A,n);
     
+    cout<<"\n Matriz intercambio de renglones";
+    imprimirMatriz(intercambioRenglones(n,0,n-1),n);
+
+    cout<<"\n Matriz suma de renglones";
+    imprimirMatriz(sumaRenglones(n,x,y),n);
+
     return 0;
 }

@@ -1,1 +1,9 @@
 *.o
+*.out
+
+#Ejecutables
+main
+matrices
+
+#Config vscode
+.vscode/

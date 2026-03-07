@@ -17,6 +17,7 @@ vector<vector<double>> mkSqMatrixI(int n){
 }
 
 void imprimirMatriz(const vector<vector<double>>& m, int n){
+    cout<<"\n";
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
