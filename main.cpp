@@ -2,13 +2,14 @@
 #include <vector>
 #include "../include/ioMatriz.h"
 #include "../include/matrixE.h"
+#include "../include/gaussJordan.h"
 
 using namespace std;
 
 int main()
 {
-    int n,x,y;
-    vector<vector<double>> A;
+    int n,m,x,y;
+    vector<vector<double>> A,B,C;
     
     cout<<"Inserte la dimensión \n"<<"n: ";
     cin>>n;
@@ -19,14 +20,28 @@ int main()
     cout<<"\n Ingresa el numero de la segunda fila de las dos para intercambiar: ";
     cin>>y; y-=1;
 
-    intercambioRenglones(n,x,y);
-    imprimirMatriz(A,n);
-    
     cout<<"\n Matriz intercambio de renglones";
-    imprimirMatriz(intercambioRenglones(n,0,n-1),n);
+    printMatrix(intercambioRenglones(n,x,y),n,n);
 
     cout<<"\n Matriz suma de renglones";
-    imprimirMatriz(sumaRenglones(n,x,y),n);
+    printMatrix(sumaRenglones(n,x,y),n,n);
 
+    cout<<"\n Matriz suma de un renglon por el multiplo de otro";
+    printMatrix(multiplofilaYSumaRenglones(n,x,y,4),n, n);
+
+    cout<<"\n ingrese la dimensión de la matriz. Filas: ";
+    cin>>n;
+    cout<<"\t Columnas: ";
+    cin>>m;
+    
+    A = readMatrix(n,m);
+    printMatrix(A,n,m);
+    
+    B = readMatrix(n,m);
+    printMatrix(B,n,m);
+
+    C = multiplicacion(A,B,n,m,m);
+    printMatrix(C,n,m);
+    
     return 0;
 }

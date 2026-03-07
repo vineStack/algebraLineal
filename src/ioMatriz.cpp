@@ -30,10 +30,10 @@ void printMatrix(const vector<vector<double>>& A, int n, int m){
 
 vector<vector<double>> readMatrix(int n, int m){
     vector<vector<double>> A(n, vector<double>(m, 0.0));
-
+    cout<<"Ingrese la matriz por filas";
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < m; j++)
         {
             cin>>A[i][j];
         }
