@@ -1,4 +1,6 @@
 #include <vector>
+#include "ioMatriz.h"
+#include "matrixE.h"
 using namespace std;
 
 vector<vector<double>> multiplicacion(const vector<vector<double>> &A, const vector<vector<double>> &B, int n, int m, int p)
@@ -16,4 +18,27 @@ vector<vector<double>> multiplicacion(const vector<vector<double>> &A, const vec
     }
 
     return C;
+}
+
+vector<vector<double>> gaussJordan(vector<vector<double>> A, int n, int m){
+    
+    vector<vector<double>> I = mkSqMatrixI(n);
+
+    for (int i = 0; i < n; i++) //Este ciclo va sobre las columnas
+    {
+        for (int j = 0; j < n; j++) //Este ciclo va sobre las filas
+        {
+            if (i==j && A[i][j]==1) continue;
+            else{
+                /*A = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),A,n,n,m);
+                printMatrix(A,n,m);*/
+                I = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),I,n,n,m);
+                printMatrix(I,n,n);
+            }            
+        }
+        
+    }
+    
+    return I;
+
 }
