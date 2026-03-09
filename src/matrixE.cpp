@@ -35,8 +35,7 @@ vector<vector<double>> filaPorEscalar(int n, int x, int k){
 vector<vector<double>> multiplofilaYSumaRenglones(int n, int x, int y, int k){
     vector<vector<double>> A = mkSqMatrixI(n);
 
-    A[x][x] = k;
-    A[x][y] = 1;
+    A[y][x] = k;
 
 
     return A;
