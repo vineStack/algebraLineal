@@ -29,9 +29,10 @@ vector<vector<double>> gaussJordan(vector<vector<double>> A, int n, int m){
         for (int j = 0; j < n; j++) //Este ciclo va sobre las filas
         {
             if (i==j && A[i][j]==1) continue;
+            if (i==j && A[i][j]!=1) A = multiplicacion(filaPorEscalar(n,i,1/A[i][j]),A,n,n,m);
             else{
-                /*A = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),A,n,n,m);
-                printMatrix(A,n,m);*/
+                A = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),A,n,n,m);
+                printMatrix(A,n,m);
                 I = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),I,n,n,m);
                 printMatrix(I,n,n);
             }            
