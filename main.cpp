@@ -12,7 +12,7 @@ int main()
     int n,m;
     vector<vector<Fraccion>> A,B;
 
-    cout<<"\n ingrese la dimensión de la matriz. \n Filas: ";
+    cout<<"\n ingrese la dimensión de la matriz.\n Filas: ";
     cin>>n;
     cout<<"\n Columnas: ";
     cin>>m;

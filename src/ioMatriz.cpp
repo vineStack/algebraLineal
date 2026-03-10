@@ -61,7 +61,7 @@ void printMatrix(const vector<vector<Fraccion>>& A, int n, int m){
 
 vector<vector<Fraccion>> readMatrix(int n, int m){
     vector<vector<Fraccion>> A(n, vector<Fraccion>(m, 0.0));
-    cout<<"Ingrese la matriz por filas";
+    cout<<"\nIngrese la matriz por filas\n";
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
