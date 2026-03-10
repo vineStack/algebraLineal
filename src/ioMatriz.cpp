@@ -49,9 +49,9 @@ vector<vector<Fraccion>> mkSqMatrixI(int n){
 
 void printMatrix(const vector<vector<Fraccion>>& A, int n, int m){
     cout<<"\n";
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < m; j++)
         {
             cout<<A[i][j]<<"\t";
         }
