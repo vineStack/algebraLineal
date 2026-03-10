@@ -32,14 +32,14 @@ vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
             Fraccion factorNormalizacion = Fraccion(1,1)/A[i][i]; //Esto hace 1 al pivote
             vector<vector<Fraccion>> E_escalar = filaPorEscalar(n,i,factorNormalizacion);
             A = multiplicacion(E_escalar,A,n,n,m);
-            I = multiplicacion(E_escalar,I,n,n,m);
+            I = multiplicacion(E_escalar,I,n,n,n);
         }
 
         for (int j = 0; j < n; j++)
         {
             if (i != j && A[j][i] != Fraccion(0,1))
             {
-                Fraccion factorEliminacion = -A[i][j];
+                Fraccion factorEliminacion = -A[j][i];
                 //Aqui se crea la matriz elemental con la cual se multiplicará por la derecha
                 vector<vector<Fraccion>> E_suma = multiplofilaYSumaRenglones(n,i,j,factorEliminacion);
 
