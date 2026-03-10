@@ -2,8 +2,8 @@
 #include "../include/ioMatriz.h"
 using namespace std;
 
-vector<vector<double>> intercambioRenglones(int n, int x, int y){
-    vector<vector<double>> A = mkSqMatrixI(n);
+vector<vector<Fraccion>> intercambioRenglones(int n, int x, int y){
+    vector<vector<Fraccion>> A = mkSqMatrixI(n);
     
     A[x][x] = 0;
     A[x][y] = 1;
@@ -13,14 +13,14 @@ vector<vector<double>> intercambioRenglones(int n, int x, int y){
     return A;
 }
 
-vector<vector<double>> sumaRenglones(int n, int x, int y){
-    vector<vector<double>> A = mkSqMatrixI(n);
+vector<vector<Fraccion>> sumaRenglones(int n, int x, int y){
+    vector<vector<Fraccion>> A = mkSqMatrixI(n);
     A[x][y] = 1;
     return A;
 }
 // parámetros --->(n: dimensión, x: fila a multiplicar por escalar, k: escalar por el cual se multiplicará)
-vector<vector<double>> filaPorEscalar(int n, int x, int k){
-    vector<vector<double>> A = mkSqMatrixI(n);
+vector<vector<Fraccion>> filaPorEscalar(int n, int x, int k){
+    vector<vector<Fraccion>> A = mkSqMatrixI(n);
     A[x][x] = k;
     return A;
 }
@@ -32,8 +32,8 @@ vector<vector<double>> filaPorEscalar(int n, int x, int k){
     y: fila en donde se aplicarán los cambios
     k: escalar por el cual se multiplicará x
 */
-vector<vector<double>> multiplofilaYSumaRenglones(int n, int x, int y, int k){
-    vector<vector<double>> A = mkSqMatrixI(n);
+vector<vector<Fraccion>> multiplofilaYSumaRenglones(int n, int x, int y, int k){
+    vector<vector<Fraccion>> A = mkSqMatrixI(n);
 
     A[y][x] = k;
 

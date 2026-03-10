@@ -1,14 +1,15 @@
 #include <iostream>
 #include <vector>
+#include "../include/fraccion.h"
 using namespace std;
 
-vector<vector<double>> mkSqMatrixZero(int n){
-    vector<vector<double>> A(n, vector<double>(n,0.0));
+vector<vector<Fraccion>> mkSqMatrixZero(int n){
+    vector<vector<Fraccion>> A(n, vector<Fraccion>(n,0.0));
     return A;
 }
 
-vector<vector<double>> mkSqMatrixI(int n){
-    vector<vector<double>> A = mkSqMatrixZero(n);
+vector<vector<Fraccion>> mkSqMatrixI(int n){
+    vector<vector<Fraccion>> A = mkSqMatrixZero(n);
     for (int i = 0; i < n; i++)
     {
         A[i][i] = 1;
@@ -16,7 +17,7 @@ vector<vector<double>> mkSqMatrixI(int n){
     return A;
 }
 
-void printMatrix(const vector<vector<double>>& A, int n, int m){
+void printMatrix(const vector<vector<Fraccion>>& A, int n, int m){
     cout<<"\n";
     for (int i = 0; i < m; i++)
     {
@@ -28,8 +29,8 @@ void printMatrix(const vector<vector<double>>& A, int n, int m){
     }   
 }
 
-vector<vector<double>> readMatrix(int n, int m){
-    vector<vector<double>> A(n, vector<double>(m, 0.0));
+vector<vector<Fraccion>> readMatrix(int n, int m){
+    vector<vector<Fraccion>> A(n, vector<Fraccion>(m, 0.0));
     cout<<"Ingrese la matriz por filas";
     for (int i = 0; i < n; i++)
     {
@@ -41,4 +42,4 @@ vector<vector<double>> readMatrix(int n, int m){
     return A;
 }
 
-//void modificaFila(std::vector<std::vector<double>>& m, int n);
+//void modificaFila(std::vector<std::vector<Fraccion>>& m, int n);

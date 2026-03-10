@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "../include/fraccion.h"
 #include "../include/ioMatriz.h"
 #include "../include/matrixE.h"
 #include "../include/gaussJordan.h"
@@ -9,7 +10,7 @@ using namespace std;
 int main()
 {
     int n,m,x,y;
-    vector<vector<double>> A,B,C;
+    vector<vector<Fraccion>> A,B,C;
 
     cout<<"\n ingrese la dimensión de la matriz. \n Filas: ";
     cin>>n;
@@ -26,7 +27,7 @@ int main()
     printMatrix(C,n,n);
     
 
-    
+
     return 0;
 
 }

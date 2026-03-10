@@ -3,9 +3,9 @@
 #include "matrixE.h"
 using namespace std;
 
-vector<vector<double>> multiplicacion(const vector<vector<double>> &A, const vector<vector<double>> &B, int n, int m, int p)
+vector<vector<Fraccion>> multiplicacion(const vector<vector<Fraccion>> &A, const vector<vector<Fraccion>> &B, int n, int m, int p)
 {
-    vector<vector<double>> C(n, vector<double>(p,0.0));
+    vector<vector<Fraccion>> C(n, vector<Fraccion>(p,0));
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < p; j++)
@@ -20,16 +20,28 @@ vector<vector<double>> multiplicacion(const vector<vector<double>> &A, const vec
     return C;
 }
 
-vector<vector<double>> gaussJordan(vector<vector<double>> A, int n, int m){
+vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
     
-    vector<vector<double>> I = mkSqMatrixI(n);
+    vector<vector<Fraccion>> I = mkSqMatrixI(n);
+    vector<vector<Fraccion>> E_escalar;
+    //primero normalizamos los pivotes
+    for (int i = 0; i < n; i++)
+    {
+        if (A[i][i] == Fraccion(1,1))
+        {
+            A = multiplicacion(filaPorEscalar(n,i,Fraccion(1,1)/A[i][i]),A,n,n,m); //Normalización del pivote
+            I = multiplicacion(filaPorEscalar(n,i,Fraccion(1,1)/A[i][i]),A,n,n,m);
+        }
+        
+    }
+    
 
     for (int i = 0; i < n; i++) //Este ciclo va sobre las columnas
     {
         for (int j = 0; j < n; j++) //Este ciclo va sobre las filas
-        {
+        {   
             if (i==j && A[i][j]==1) continue;
-            if (i==j && A[i][j]!=1) A = multiplicacion(filaPorEscalar(n,i,1/A[i][j]),A,n,n,m);
+            
             else{
                 A = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),A,n,n,m);
                 printMatrix(A,n,m);

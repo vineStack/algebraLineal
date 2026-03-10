@@ -4,7 +4,7 @@
 #include <vector>
 #include "ioMatriz.h"
 
-std::vector<std::vector<double>> multiplicacion(const std::vector<std::vector<double>> &A, const std::vector<std::vector<double>> &B, int n, int m, int p);
+std::vector<std::vector<Fraccion>> multiplicacion(const std::vector<std::vector<Fraccion>> &A, const std::vector<std::vector<Fraccion>> &B, int n, int m, int p);
 
-std::vector<std::vector<double>> gaussJordan(std::vector<std::vector<double>> A, int n, int m);
+std::vector<std::vector<Fraccion>> gaussJordan(std::vector<std::vector<Fraccion>> A, int n, int m);
 #endif
