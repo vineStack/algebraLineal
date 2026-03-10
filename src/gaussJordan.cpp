@@ -23,32 +23,33 @@ vector<vector<Fraccion>> multiplicacion(const vector<vector<Fraccion>> &A, const
 vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
     
     vector<vector<Fraccion>> I = mkSqMatrixI(n);
-    vector<vector<Fraccion>> E_escalar;
-    //primero normalizamos los pivotes
+    
     for (int i = 0; i < n; i++)
     {
-        if (A[i][i] == Fraccion(1,1))
+        //primero normalizamos los pivotes
+        if (A[i][i] != Fraccion(1,1))
         {
-            A = multiplicacion(filaPorEscalar(n,i,Fraccion(1,1)/A[i][i]),A,n,n,m); //Normalización del pivote
-            I = multiplicacion(filaPorEscalar(n,i,Fraccion(1,1)/A[i][i]),A,n,n,m);
+            Fraccion factorNormalizacion = Fraccion(1,1)/A[i][i]; //Esto hace 1 al pivote
+            vector<vector<Fraccion>> E_escalar = filaPorEscalar(n,i,factorNormalizacion);
+            A = multiplicacion(E_escalar,A,n,n,m);
+            I = multiplicacion(E_escalar,I,n,n,m);
+        }
+
+        for (int j = 0; j < n; j++)
+        {
+            if (i != j && A[j][i] != Fraccion(0,1))
+            {
+                Fraccion factorEliminacion = -A[i][j];
+                //Aqui se crea la matriz elemental con la cual se multiplicará por la derecha
+                vector<vector<Fraccion>> E_suma = multiplofilaYSumaRenglones(n,i,j,factorEliminacion);
+
+                A = multiplicacion(E_suma,A,n,n,m);
+                I = multiplicacion(E_suma,I,n,n,n);
+
+            }
+            
         }
         
-    }
-    
-
-    for (int i = 0; i < n; i++) //Este ciclo va sobre las columnas
-    {
-        for (int j = 0; j < n; j++) //Este ciclo va sobre las filas
-        {   
-            if (i==j && A[i][j]==1) continue;
-            
-            else{
-                A = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),A,n,n,m);
-                printMatrix(A,n,m);
-                I = multiplicacion(multiplofilaYSumaRenglones(n,i,j, -A[i][j]),I,n,n,m);
-                printMatrix(I,n,n);
-            }            
-        }
         
     }
     

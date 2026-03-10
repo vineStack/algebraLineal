@@ -19,7 +19,7 @@ vector<vector<Fraccion>> sumaRenglones(int n, int x, int y){
     return A;
 }
 // parámetros --->(n: dimensión, x: fila a multiplicar por escalar, k: escalar por el cual se multiplicará)
-vector<vector<Fraccion>> filaPorEscalar(int n, int x, int k){
+vector<vector<Fraccion>> filaPorEscalar(int n, int x, Fraccion k){
     vector<vector<Fraccion>> A = mkSqMatrixI(n);
     A[x][x] = k;
     return A;
@@ -32,7 +32,7 @@ vector<vector<Fraccion>> filaPorEscalar(int n, int x, int k){
     y: fila en donde se aplicarán los cambios
     k: escalar por el cual se multiplicará x
 */
-vector<vector<Fraccion>> multiplofilaYSumaRenglones(int n, int x, int y, int k){
+vector<vector<Fraccion>> multiplofilaYSumaRenglones(int n, int x, int y, Fraccion k){
     vector<vector<Fraccion>> A = mkSqMatrixI(n);
 
     A[y][x] = k;

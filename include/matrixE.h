@@ -14,8 +14,8 @@ std::vector<std::vector<Fraccion>> intercambioRenglones(int n, int x, int y);
 std::vector<std::vector<Fraccion>> sumaRenglones(int n, int x, int y);
 
 // parámetros --->(n: dimensión, x: fila a multiplicar por escalar, k: escalar por el cual se multiplicará)
-std::vector<std::vector<Fraccion>> filaPorEscalar(int n, int x, int k);
+std::vector<std::vector<Fraccion>> filaPorEscalar(int n, int x, Fraccion k);
 
-std::vector<std::vector<Fraccion>> multiplofilaYSumaRenglones(int n, int x, int y, int k);
+std::vector<std::vector<Fraccion>> multiplofilaYSumaRenglones(int n, int x, int y, Fraccion k);
 
 #endif

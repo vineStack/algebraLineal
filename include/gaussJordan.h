@@ -4,6 +4,13 @@
 #include <vector>
 #include "ioMatriz.h"
 
+/*
+    &A -> Referencia a factor izquierdo
+    &B -> Referencia a factor derecho
+    n: filas &A
+    m: columnas &A, filas &B
+    p: columnas &B
+*/
 std::vector<std::vector<Fraccion>> multiplicacion(const std::vector<std::vector<Fraccion>> &A, const std::vector<std::vector<Fraccion>> &B, int n, int m, int p);
 
 std::vector<std::vector<Fraccion>> gaussJordan(std::vector<std::vector<Fraccion>> A, int n, int m);

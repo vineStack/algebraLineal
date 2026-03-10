@@ -14,7 +14,7 @@ struct Fraccion{
     Fraccion operator+(const Fraccion& otra) const ;
 
     // Sobrecarga del inverso aditivo
-    Fraccion operator-(const Fraccion& otra);
+    Fraccion operator-(const Fraccion& otra) const;
 
     Fraccion operator+=(const Fraccion& otra);
 
@@ -27,6 +27,8 @@ struct Fraccion{
     // Sobrecarga de comparación
     bool operator==(const Fraccion& otra) const;
 
+    bool operator!=(const Fraccion& otra) const;
+
     // Sobrecarga de entrada (cin)
     friend std::istream& operator>>(std::istream& is, Fraccion& f);
 
@@ -34,4 +36,4 @@ struct Fraccion{
     friend std::ostream& operator<<(std::ostream& os, const Fraccion& f);
 
 };
-#endif fraccion_h
+#endif

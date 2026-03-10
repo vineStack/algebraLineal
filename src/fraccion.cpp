@@ -23,8 +23,8 @@ struct Fraccion {
     }
 
     // Sobrecarga del inverso aditivo
-    Fraccion operator-() {
-        return Fraccion(-num,-den);
+    Fraccion operator-() const {
+        return Fraccion(-num,den);
     }
 
     // Sobrecarga de operador de asignación de suma
@@ -50,6 +50,11 @@ struct Fraccion {
     //Sobrecarga de comparación
     bool operator==(const Fraccion& otra) const{
         return(num == otra.num && den == otra.den );
+    }
+
+    // Operador != para que Gauss-Jordan sea más limpio
+    bool operator!=(const Fraccion& otra) const {
+        return !(*this == otra);
     }
 
     // Sobrecarga de entrada (cin)

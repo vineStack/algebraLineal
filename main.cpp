@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    int n,m,x,y;
+    int n,m;
     vector<vector<Fraccion>> A,B,C;
 
     cout<<"\n ingrese la dimensión de la matriz. \n Filas: ";
@@ -20,10 +20,10 @@ int main()
     A = readMatrix(n,m);
     printMatrix(A,n,m);
     
-    cout<<"\Disque aplicando Gauss Jordan";
+    cout<<"\n Disque aplicando Gauss Jordan";
     C = gaussJordan(A,n,m);
 
-    cout<<"En teoría, la matriz inversa";
+    cout<<"\nEn teoría, la matriz inversa";
     printMatrix(C,n,n);
     
 
