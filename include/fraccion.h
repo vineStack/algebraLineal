@@ -14,7 +14,7 @@ struct Fraccion{
     Fraccion operator+(const Fraccion& otra) const ;
 
     // Sobrecarga del inverso aditivo
-    Fraccion operator-(const Fraccion& otra) const;
+    Fraccion operator-() const;
 
     Fraccion operator+=(const Fraccion& otra);
 
