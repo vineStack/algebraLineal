@@ -3,6 +3,36 @@
 #include "../include/fraccion.h"
 using namespace std;
 
+/*
+    Crea la matriz aumentada
+    &A -> vector<vector<Fraccion>>
+    &B -> vector<vector<Fraccion>>
+*/
+vector<vector<Fraccion>> concatenarMatrices(const vector<vector<Fraccion>>& A, const vector<vector<Fraccion>>& B) {
+    int n = A.size();
+    int m = A[0].size();
+    int p = B[0].size();
+
+    // Creamos una matriz con n filas y (m + p) columnas
+    vector<vector<Fraccion>> aumentada(n, vector<Fraccion>(m + p));
+
+    for (int i = 0; i < n; i++) {
+        // Copiamos la parte de A
+        for (int j = 0; j < m; j++) {
+            aumentada[i][j] = A[i][j];
+        }
+        // Copiamos la parte de B justo después de m
+        for (int j = 0; j < p; j++) {
+            aumentada[i][m + j] = B[i][j];
+        }
+    }
+
+    return aumentada;
+}
+
+/*
+    Matriz cero de orden nxn
+*/
 vector<vector<Fraccion>> mkSqMatrixZero(int n){
     vector<vector<Fraccion>> A(n, vector<Fraccion>(n,0.0));
     return A;

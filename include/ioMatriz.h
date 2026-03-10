@@ -5,6 +5,13 @@
 #include <vector>
 #include "fraccion.h"
 
+/*
+Concatena horizontalmente la matriz A y la matriz B. Crea la matriz aumentada
+    &A -> vector<vector<Fraccion>>
+    &B -> vector<vector<Fraccion>>
+*/
+std::vector<std::vector<Fraccion>> concatenarMatrices(const std::vector<std::vector<Fraccion>>& A, const std::vector<std::vector<Fraccion>>& B);
+
 std::vector<std::vector<Fraccion>> mkSqMatrixZero(int n);
 
 /*

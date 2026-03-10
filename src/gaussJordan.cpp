@@ -3,6 +3,17 @@
 #include "matrixE.h"
 using namespace std;
 
+// Función auxiliar para extraer la parte derecha (la inversa) de la matriz aumentada
+vector<vector<Fraccion>> extraerInversa(const vector<vector<Fraccion>>& M, int n, int m) {
+    vector<vector<Fraccion>> inversa(n, vector<Fraccion>(n));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            inversa[i][j] = M[i][m + j];
+        }
+    }
+    return inversa;
+}
+
 vector<vector<Fraccion>> multiplicacion(const vector<vector<Fraccion>> &A, const vector<vector<Fraccion>> &B, int n, int m, int p)
 {
     vector<vector<Fraccion>> C(n, vector<Fraccion>(p,0));
@@ -23,36 +34,55 @@ vector<vector<Fraccion>> multiplicacion(const vector<vector<Fraccion>> &A, const
 vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
     
     vector<vector<Fraccion>> I = mkSqMatrixI(n);
-    
+    vector<vector<Fraccion>> M = concatenarMatrices(A,I);
+    int columnasM = n+m;
+
     for (int i = 0; i < n; i++)
     {
-        //primero normalizamos los pivotes
-        if (A[i][i] != Fraccion(1,1))
+
+        // 2. MANEJO DE CEROS: Intercambio de filas (Pivoteo parcial)
+        if (M[i][i] == Fraccion(0, 1)) {
+            int filaSwap = -1;
+            for (int k = i + 1; k < n; k++) {
+                if (M[k][i] != Fraccion(0, 1)) {
+                    filaSwap = k;
+                    break;
+                }
+            }
+
+            if (filaSwap == -1) {
+                throw runtime_error("La matriz no tiene inversa (es singular).");
+            }
+
+            // Aplicar matriz elemental de intercambio a la matriz aumentada completa
+            vector<vector<Fraccion>> E_swap = intercambioRenglones(n, i, filaSwap);
+            M = multiplicacion(E_swap, M, n, n, columnasM);
+        }
+
+        //Ahora normalizamos los pivotes
+        if (M[i][i] != Fraccion(1,1))
         {
-            Fraccion factorNormalizacion = Fraccion(1,1)/A[i][i]; //Esto hace 1 al pivote
+            Fraccion factorNormalizacion = Fraccion(1,1)/M[i][i]; //Esto hace 1 al pivote
             vector<vector<Fraccion>> E_escalar = filaPorEscalar(n,i,factorNormalizacion);
-            A = multiplicacion(E_escalar,A,n,n,m);
-            I = multiplicacion(E_escalar,I,n,n,n);
+            M = multiplicacion(E_escalar,M,n,n,columnasM);
         }
 
         for (int j = 0; j < n; j++)
         {
-            if (i != j && A[j][i] != Fraccion(0,1))
+            if (i != j && M[j][i] != Fraccion(0,1))
             {
-                Fraccion factorEliminacion = -A[j][i];
+                Fraccion factorEliminacion = -M[j][i];
                 //Aqui se crea la matriz elemental con la cual se multiplicará por la derecha
                 vector<vector<Fraccion>> E_suma = multiplofilaYSumaRenglones(n,i,j,factorEliminacion);
 
-                A = multiplicacion(E_suma,A,n,n,m);
-                I = multiplicacion(E_suma,I,n,n,n);
-
+                M = multiplicacion(E_suma,M,n,n,columnasM);
+                cout<<"\n--------------------------------------------------------\n";
+                printMatrix(M,n,columnasM);
+                cout<<"\n--------------------------------------------------------\n";
             }
-            
         }
-        
-        
     }
     
-    return I;
+    return extraerInversa(M,n,m);
 
 }
