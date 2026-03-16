@@ -17,8 +17,6 @@ vector<vector<Fraccion>> extraerInversa(const vector<vector<Fraccion>>& M, int n
 vector<vector<Fraccion>> extraerReduccion(const vector<vector<Fraccion>>& M, int n, int m) {
     vector<vector<Fraccion>> reduccion(n, vector<Fraccion>(m));
 
-    cout<<"\n--------------->Extraccion de la reducción";
-
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -117,7 +115,7 @@ vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
     }
 
     //Si la matriz no es cuadrada, devuelve la reducción por renglones de la matriz dada
-    if (n != m) { cout<<"\n matriz no cuadrada\n"; return extraerReduccion(M,n,m);}
+    if (n != m)return extraerReduccion(M,n,m);
     return extraerInversa(M,n,m);
 
 }
