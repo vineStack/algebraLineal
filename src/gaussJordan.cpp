@@ -1,6 +1,6 @@
 #include <vector>
-#include "ioMatriz.h"
-#include "matrixE.h"
+#include "../include/ioMatriz.h"
+#include "../include/matrixE.h"
 using namespace std;
 
 // Función auxiliar para extraer la parte derecha (la inversa) de la matriz aumentada
@@ -12,6 +12,22 @@ vector<vector<Fraccion>> extraerInversa(const vector<vector<Fraccion>>& M, int n
         }
     }
     return inversa;
+}
+
+vector<vector<Fraccion>> extraerReduccion(const vector<vector<Fraccion>>& M, int n, int m) {
+    vector<vector<Fraccion>> reduccion(n, vector<Fraccion>(m));
+
+    cout<<"\n--------------->Extraccion de la reducción";
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            /* code */
+            reduccion[i][j] = M[i][j] ;
+        }
+    }
+    return reduccion;
 }
 
 vector<vector<Fraccion>> multiplicacion(const vector<vector<Fraccion>> &A, const vector<vector<Fraccion>> &B, int n, int m, int p)
@@ -87,7 +103,10 @@ vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
                 Fraccion factorEliminacion = -M[j][i];
                 //Aqui se crea la matriz elemental con la cual se multiplicará por la derecha
                 vector<vector<Fraccion>> E_suma = multiplofilaYSumaRenglones(n,i,j,factorEliminacion);
-                cout<<"\n\nSe hará 0 la entrada ("<<i+1<<","<<j+1<<") con la matriz elemental que multiplica la fila "<<i+1<<" por "<<factorEliminacion<<" y lo suma a la fila "<<j+1;
+                cout<<"\n\nSe hará 0 la entrada ("<<i+1<<","<<j+1<<") con la matriz elemental que multiplica la fila "<<i+1<<" por "<<factorEliminacion<<" y lo suma a la fila "<<j+1<<". La matriz elemental es:";
+                cout<<"\n--------------------------------------------------------\n";
+                printMatrix(E_suma,n,n);
+                cout<<"\n--------------------------------------------------------\n";
                 M = multiplicacion(E_suma,M,n,n,columnasM);
                 
                 cout<<" Así se obtiene"<<"\n--------------------------------------------------------\n";
@@ -96,7 +115,9 @@ vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
             }
         }
     }
-    
+
+    //Si la matriz no es cuadrada, devuelve la reducción por renglones de la matriz dada
+    if (n != m) { cout<<"\n matriz no cuadrada\n"; return extraerReduccion(M,n,m);}
     return extraerInversa(M,n,m);
 
 }
