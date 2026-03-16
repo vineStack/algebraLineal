@@ -19,11 +19,21 @@ int main()
     
     A = readMatrix(n,m);
     printMatrix(A,n,m);
-    
     B = gaussJordan(A,n,m);
+    try
+    {
+        cout<<"\n\nPor lo tanto, la matriz inversa es:";
+        printMatrix(B,n,n);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        cout<<"\n\nLa reducción por renglones es:\n";
+        printMatrix(B,n,m);
+    }
+    
+    
 
-    cout<<"\nEn teoría, la matriz inversa";
-    printMatrix(B,n,n);
     
 
 
