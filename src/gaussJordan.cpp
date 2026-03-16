@@ -67,7 +67,7 @@ vector<vector<Fraccion>> gaussJordan(vector<vector<Fraccion>> A, int n, int m){
             }
 
             if (filaSwap == -1) {
-                throw runtime_error("La matriz no tiene inversa (es singular).");
+                continue;
             }
 
             // Aplicar matriz elemental de intercambio a la matriz aumentada completa
